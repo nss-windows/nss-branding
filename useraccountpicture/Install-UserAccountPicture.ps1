@@ -1,5 +1,23 @@
-# Import as a standard application in MDT.
-# Quiet install command: PowerShell.exe -ExecutionPolicy Bypass -NoProfile -Command .\Install-UserAccountPicture.ps1
+<#
+.SYNOPSIS
+Sets the default user account picture.
+
+.DESCRIPTION
+This script replaces the default user account images on Windows 10 with an alternate set. 
+
+.NOTES   
+Name       : Install-UserAccountPicture.ps1
+Author     : Darren Hollinrake
+Version    : 1.0
+DateCreated: 2018-04-01
+DateUpdated: 2020-05-21
+
+MDT Use:
+Import as a standard application in MDT. The folder containing the script will be the source used for importing.
+
+Quiet install command: PowerShell.exe -ExecutionPolicy Bypass -NoProfile -Command .\Install-UserAccountPicture.ps1
+
+#>
 
 #Log
 $LogPath = "C:\NSS\Logs\"
