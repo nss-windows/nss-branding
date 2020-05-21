@@ -8,7 +8,7 @@ $scriptname = [io.path]::GetFileNameWithoutExtension("$($MyInvocation.MyCommand.
 $TransactionLog = $LogPath + $(Get-Date -Format yyyyMMdd) + "_" + $scriptname + ".log"
 Start-Transcript -LiteralPath $TransactionLog
 
-$AppFolder = "NSS\Branding"
+$AppFolder = "NSS\Branding\useraccountpicture"
 # Ensure we have our task sequence variables available
 Import-Module $env:SystemDrive\MININT\Modules\ZTIUtility
 #
@@ -31,7 +31,7 @@ takeown /f "$env:ProgramData\Microsoft\User Account Pictures\*"
 Remove-Item "$env:ProgramData\Microsoft\User Account Pictures\user*"
 
 # Copy our new lock screen files to the proper location
-Copy-Item "$env:SystemDrive\$AppFolder\images\useraccountpicture\*" "$env:ProgramData\Microsoft\User Account Pictures"
+Copy-Item "$env:SystemDrive\$AppFolder\img\useraccountpicture\*" "$env:ProgramData\Microsoft\User Account Pictures"
 
 # Add the registry key to set the default account picture for all users
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v UseDefaultTile /t REG_DWORD /d 1

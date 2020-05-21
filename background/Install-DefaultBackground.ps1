@@ -8,7 +8,7 @@ $scriptname = [io.path]::GetFileNameWithoutExtension("$($MyInvocation.MyCommand.
 $TransactionLog = $LogPath + $(Get-Date -Format yyyyMMdd) + "_" + $scriptname + ".log"
 Start-Transcript -LiteralPath $TransactionLog
 
-$AppFolder = "NSS\Branding"
+$AppFolder = "NSS\Branding\background"
 #
 # Create the App Directory
 If(!(Test-Path "$env:SystemDrive\$AppFolder")) {
@@ -31,8 +31,8 @@ Remove-Item C:\Windows\Web\4K\Wallpaper\Windows\*
 Remove-Item C:\Windows\Web\Wallpaper\Windows\img0.jpg
 
 # Copy our new wallpaper files to the proper location
-Copy-Item "$env:SystemDrive\$AppFolder\images\background\img0.jpg" "C:\Windows\Web\Wallpaper\Windows\img0.jpg"
-Copy-Item "$env:SystemDrive\$AppFolder\images\img0_*.jpg" "C:\Windows\Web\4K\Wallpaper\Windows"
+Copy-Item "$env:SystemDrive\$AppFolder\img\background\img0.jpg" "C:\Windows\Web\Wallpaper\Windows\img0.jpg"
+Copy-Item "$env:SystemDrive\$AppFolder\img\img0_*.jpg" "C:\Windows\Web\4K\Wallpaper\Windows"
 
 # Give ownership back to Trusted Installer
 & icacls C:\Windows\Web\Wallpaper\Windows\img0.jpg /setowner "NT SERVICE\TrustedInstaller"

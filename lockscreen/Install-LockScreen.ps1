@@ -8,7 +8,7 @@ $scriptname = [io.path]::GetFileNameWithoutExtension("$($MyInvocation.MyCommand.
 $TransactionLog = $LogPath + $(Get-Date -Format yyyyMMdd) + "_" + $scriptname + ".log"
 Start-Transcript -LiteralPath $TransactionLog
 
-$AppFolder = "NSS\Branding"
+$AppFolder = "NSS\Branding\lockscreen"
 # Ensure we have our task sequence variables available
 Import-Module $env:SystemDrive\MININT\Modules\ZTIUtility
 #
@@ -31,7 +31,7 @@ takeown /f C:\Windows\Web\Screen\*
 Remove-Item C:\Windows\Web\Screen\*
 
 # Copy our new lock screen files to the proper location
-Copy-Item "$env:SystemDrive\$AppFolder\images\lockscreen\img100.jpg" "C:\Windows\Web\Screen"
+Copy-Item "$env:SystemDrive\$AppFolder\img\lockscreen\img100.jpg" "C:\Windows\Web\Screen"
 
 # Add the registry key so the lock screen is set to the image we copied
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization /v LockScreenImage /t REG_SZ /d "C:\Windows\Web\Screen\img100.jpg"
